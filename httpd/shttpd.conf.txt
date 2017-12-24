@@ -1,18 +1,18 @@
 <VirtualHost 165.227.167.147:8443>
 #<VirtualHost 127.0.0.1:8443>
 
-    ServerName ddaudio.com.ua
-    ServerAlias www.ddaudio.com.ua dd-tuning.fr ddtuning.it ddaudio.es dd-tuning.pl dd-tuning.de dd-tuning.com ddtuning.com.ua
-    ServerAdmin info@ddaudio.com.ua
-    DocumentRoot /home/ddaudio/web/ddaudio.com.ua/public_html
-    ScriptAlias /cgi-bin/ /home/ddaudio/web/ddaudio.com.ua/cgi-bin/
-    Alias /vstats/ /home/ddaudio/web/ddaudio.com.ua/stats/
-    Alias /error/ /home/ddaudio/web/ddaudio.com.ua/document_errors/
-    #SuexecUserGroup ddaudio ddaudio
-    CustomLog /var/log/httpd/domains/ddaudio.com.ua.bytes bytes
-    CustomLog /var/log/httpd/domains/ddaudio.com.ua.log combined
-    ErrorLog /var/log/httpd/domains/ddaudio.com.ua.error.log
-    <Directory /home/ddaudio/web/ddaudio.com.ua/public_html>
+    ServerName test.com.ua
+    ServerAlias www.test.com.ua test.fr test.it test.es test.pl test.de test.com test.com.ua
+    ServerAdmin info@test.com.ua
+    DocumentRoot /home/test/web/test.com.ua/public_html
+    ScriptAlias /cgi-bin/ /home/test/web/test.com.ua/cgi-bin/
+    Alias /vstats/ /home/test/web/test.com.ua/stats/
+    Alias /error/ /home/test/web/test.com.ua/document_errors/
+    #SuexecUserGroup test test
+    CustomLog /var/log/httpd/domains/test.com.ua.bytes bytes
+    CustomLog /var/log/httpd/domains/test.com.ua.log combined
+    ErrorLog /var/log/httpd/domains/test.com.ua.error.log
+    <Directory /home/test/web/test.com.ua/public_html>
 
         AllowOverride All
         SSLRequireSSL
@@ -29,10 +29,10 @@
         php_admin_value post_max_size  256M
         php_admin_value memory_limit 512M
         php_admin_flag  allow_url_fopen on
-        php_admin_value sendmail_path "/usr/sbin/sendmail -t -i -f shop@ddaudio.com.ua"
-        php_admin_value open_basedir /home/ddaudio/web/ddaudio.com.ua/public_html:/home/ddaudio/tmp:/bin:/usr/bin:/usr/local/bin:/var/www/html:/tmp:/usr/share:/etc/ph
+        php_admin_value sendmail_path "/usr/sbin/sendmail -t -i -f shop@test.com.ua"
+        php_admin_value open_basedir /home/test/web/test.com.ua/public_html:/home/test/tmp:/bin:/usr/bin:/usr/local/bin:/var/www/html:/tmp:/usr/share:/etc/ph
 pMyAdmin:/etc/phpmyadmin:/var/lib/phpmyadmin:/etc/roundcubemail:/etc/roundcube:/var/lib/roundcube
-        php_admin_value upload_tmp_dir /home/ddaudio/tmp
+        php_admin_value upload_tmp_dir /home/test/tmp
         php_admin_value session.save_handler memcache
         php_admin_value session.save_path tcp://localhost:11211?persistent=1&weight=1&timeout=1&retry_interval=15
         php_admin_value session.gc_maxlifetime 604800
@@ -40,23 +40,23 @@ pMyAdmin:/etc/phpmyadmin:/var/lib/phpmyadmin:/etc/roundcubemail:/etc/roundcube:/
         php_admin_value mbstring.func_overload 0
 
      </Directory>
-    <Directory /home/ddaudio/web/ddaudio.com.ua/stats>
+    <Directory /home/test/web/test.com.ua/stats>
         AllowOverride All
     </Directory>
     SSLEngine on
     SSLVerifyClient none
-    SSLCertificateFile /home/ddaudio/conf/web/ssl.ddaudio.com.ua.crt
-    SSLCertificateKeyFile /home/ddaudio/conf/web/ssl.ddaudio.com.ua.key
-    SSLCertificateChainFile /home/ddaudio/conf/web/ssl.ddaudio.com.ua.ca
+    SSLCertificateFile /home/test/conf/web/ssl.test.com.ua.crt
+    SSLCertificateKeyFile /home/test/conf/web/ssl.test.com.ua.key
+    SSLCertificateChainFile /home/test/conf/web/ssl.test.com.ua.ca
     <IfModule mod_ruid2.c>
         RMode config
-        RUidGid ddaudio ddaudio
+        RUidGid test test
         RGroups apache
     </IfModule>
     <IfModule itk.c>
-        AssignUserID ddaudio ddaudio
+        AssignUserID test test
     </IfModule>
 
-    IncludeOptional /home/ddaudio/conf/web/shttpd.ddaudio.com.ua.conf*
+    IncludeOptional /home/test/conf/web/shttpd.test.com.ua.conf*
 
 </VirtualHost>
